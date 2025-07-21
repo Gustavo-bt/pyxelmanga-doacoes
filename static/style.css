@@ -1,0 +1,10 @@
+
+body {
+    font-family: Arial;
+    padding: 20px;
+    background-color: #f3f3f3;
+}
+form input {
+    display: block;
+    margin: 5px 0;
+}

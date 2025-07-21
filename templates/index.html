@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doações - PyxelManga</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Doações para o PyxelManga</h1>
+    <form action="/doar" method="POST">
+        <input type="text" name="nome" placeholder="Seu nome (opcional)">
+        <input type="number" step="0.01" name="valor" placeholder="Valor (R$)">
+        <input type="text" name="comprovante" placeholder="Link do comprovante">
+        <button type="submit">Enviar doação</button>
+    </form>
+
+    <h2>Placar de Doações</h2>
+    <p>Total arrecadado: R$ {{ total }}</p>
+    <ul>
+        {% for d in doacoes %}
+            <li><strong>{{ d.nome }}</strong> doou R$ {{ d.valor }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

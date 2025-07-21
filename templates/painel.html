@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Secreto</title>
+</head>
+<body>
+    {% if not doacoes %}
+    <form method="POST">
+        <input type="password" name="senha" placeholder="Senha do admin">
+        <button type="submit">Entrar</button>
+    </form>
+    {% else %}
+    <h1>Painel de Aprovação</h1>
+    <ul>
+        {% for d in doacoes %}
+            <li>
+                {{ d.nome }} - R$ {{ d.valor }} - {{ d.status }}
+                <br>Comprovante: {{ d.comprovante }}
+                <br>
+                {% if d.status == 'pendente' %}
+                    <a href="/aprovar/{{ loop.index0 }}">✅ Aprovar</a>
+                    <a href="/rejeitar/{{ loop.index0 }}">❌ Rejeitar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
